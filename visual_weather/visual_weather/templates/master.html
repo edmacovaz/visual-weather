@@ -27,8 +27,10 @@
       padding: 0;
       border: 0;
     }
+
     body { font-family: helvetica, arial, sans-serif;}
     /*body {font-family: 'Inconsolata', sans-serif;}*/
+
     /* #container {position: relative; left: -120px; width: 544px;}
     nav, section.images {display: inline-block;}
     nav {width: 120px; vertical-align: top;}*/
@@ -58,29 +60,30 @@
 </head>
 <body>
   <section id="container">
-  <!-- <nav id="days">
+  <nav id="days">
     <ol>
-      <li>
-        <ul>
-          <li>Friday</li>
-          <li>18 degrees</li>
-        </ul>
-      </li>
       <li id="today">
         <ul>
-          <li>Saturday</li>
-          <li>18 degrees</li>
+          <li>{{ current_data.weekday }}</li>
+          <li>{{ current_data.data.maxtemp }} °C</li>
+        </ul>
+      </li>
+      <li id="tomorrow">
+        <ul>
+          <li><a href="/?{{ tomorrows_data.url }}">{{ tomorrows_data.weekday }}</a></li>
+          <li>{{ tomorrows_data.data.maxtemp }} °C</li>
         </ul>
       </li>
       <li>
         <ul>
-          <li>Sunday</li>
-          <li>18</li>
+          <li><a href="/?{{ after_tomorrows_data.url }}">{{ after_tomorrows_data.weekday }}</a></li>
+          <li>{{ after_tomorrows_data.data.maxtemp }} °C</li>
         </ul>
       </li>
 
     </ol>
-  </nav> -->
+  </nav>
+  </section>
 
   <section class="images">
     <header>
