@@ -9,7 +9,9 @@ def index(request):
     when = request.GET.get("when", "today")
     matching_date = weather.date_matching_weather(lat, lon, when=when)
     urls = photos.search(matching_date)
-    return render_to_response("master.html", dict(urls=urls))
+    context = dict(urls=urls,
+                   matching_date=matching_date)
+    return render_to_response("master.html", context)
 
 
 def for_day(request, day=''):
