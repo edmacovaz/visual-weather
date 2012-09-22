@@ -20,7 +20,8 @@
     nav {width: 120px; vertical-align: top;}
     .images {width: 420px}
     .images ul li {height: 140px;}
-    .images h1 {position: fixed;}
+    .images header {position: fixed; }
+    .images p {text-align: center; width: 320px;}
     nav ol li {height: 120px; width: 120px; background-color: grey;}
     nav ol li, nav ol li ul li {list-style: none;}
     nav ol, nav ol li ul  {padding: 0px}
@@ -57,10 +58,9 @@
   </nav>
 
   <section class="images">
-    <h2>What today's weather looks like.</h2>
-    <h3>Today's weather is similar to the weather on {{ matching_date }}.</h3>
-    <h1>- Jacket -</h1>
-    <a id="show-nav" href="#">Show nav</a>
+    <header>
+      <p>The weather's like it was on {{ matching_date }}</p>
+    </header>
     <ul>
       {% for url in urls %}
         <li>
