@@ -13,7 +13,20 @@
 
   </script>
   <style type="text/css">
-    * {padding: 0px; margin: 0px;}
+    /*  Resets   ------  */
+
+    html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, 
+    p, blockquote, pre, a, abbr, address, cite, code, del, dfn, em, 
+    img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, hr, 
+    dl, dt, dd, ol, ul, li, fieldset, form, label, legend, 
+    table, caption, tbody, tfoot, thead, tr, th, td,
+    article, aside, canvas, details, figure, figcaption, hgroup, 
+    menu, footer, header, nav, section, summary, time, mark, audio, video {
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+
     body {font-family: helvetica, sans-serif; }
     #container {position: relative; left: -120px; width: 544px;}
     nav, section.images {display: inline-block;}
@@ -28,6 +41,13 @@
     img {max-height: 100%;}
 
     .images ul li {display: inline-block; list-style: none;}
+
+    @media only screen and (min-width: 480px) {
+    #container {position: relative; left: -120px; width: 100%;}
+    .images {width: 100%}
+    .images ul li {height: 280px;}
+
+    }
 
   </style>
 </head>
