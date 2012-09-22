@@ -6,31 +6,34 @@ from django.conf import settings
 
 from base.models import WeatherData
 
-WEATHER_URL = "http://api.aerisapi.com/forecasts/?limit=1&p={lat},{lon}&client_id={client_id}&client_secret={client_secret}"
+WEATHER_URL = "http://api.aerisapi.com/forecasts/?limit={number_days}&p={lat},{lon}&client_id={client_id}&client_secret={client_secret}"
 
 def kph_to_bft(speed):
     speed_in_mps = speed / 3.6
     return int(round((speed_in_mps / .836) ** (2. / 3.)))
 
 
-def get_data(lat, lon):
+def get_data(lat, lon, number_days=3):
     
     json_data = urllib.urlopen(WEATHER_URL.format(client_id=settings.HAMWEATHER_CLIENT_ID,
                                                   client_secret=settings.HAMWEATHER_CLIENT_SECRET,
                                                   lat=lat,
-                                                  lon=lon)).read()
+                                                  lon=lon,
+                                                  number_days=number_days)).read()
 
     data = json.loads(json_data)
-    real_data = data['response'][0]['periods'][0]
-    parsed_data = {}
-    parsed_data['temp'] = real_data['avgTempC']
-    parsed_data['mintemp'] = real_data['minTempC']
-    parsed_data['maxtemp'] = real_data['maxTempC']
-    parsed_data['pressure'] = real_data['pressureMB']
-    parsed_data['precipation'] = real_data['precipMM']
-    parsed_data['wind'] = kph_to_bft(real_data['windSpeedMaxKPH'])
-    parsed_data['dewpoint'] = real_data['dewpointC']
-    return parsed_data
+    forecasts = []
+    for period in data['response'][0]['periods']:
+        parsed_data = {}
+        parsed_data['temp'] = period['avgTempC']
+        parsed_data['mintemp'] = period['minTempC']
+        parsed_data['maxtemp'] = period['maxTempC']
+        parsed_data['pressure'] = period['pressureMB']
+        parsed_data['precipation'] = period['precipMM']
+        parsed_data['wind'] = kph_to_bft(period['windSpeedMaxKPH'])
+        parsed_data['dewpoint'] = period['dewpointC']
+        forecasts.append(parsed_data)
+    return forecasts
 
 
 def find_matches(data, limit=5):
@@ -48,7 +51,7 @@ def find_matches(data, limit=5):
 
 
 def dates_matching_current_weather(lat, lon, limit=1):
-    for wd in find_matches(get_data(lat, lon), limit=limit):
+    for wd in find_matches(get_data(lat, lon, number_days=1)[0], limit=limit):
         yield wd.date
 
 
