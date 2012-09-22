@@ -18,6 +18,7 @@ def search(year, month, day, lat='52.52992', lon='13.41157', limit=32):
                                   lat=lat,
                                   lon=lon,
                                   #geo_context='2',
-                                  radius='5')[:limit]
+                                  per_page=limit,
+                                  radius='5')
     # TODO: just return URL of medium resolution image for now
     return [p.getMedium() for p in photos]
