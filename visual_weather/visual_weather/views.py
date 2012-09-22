@@ -1,10 +1,14 @@
 from django.shortcuts import render_to_response
 from datetime import date, datetime
 from base import photos
+from base import weather
 
 
 def index(request):
-    urls = photos.search(date(2012, 6, 1))
+    lat, lon = 52.529531, 13.411978
+    when = request.GET.get("when", "today")
+    matching_date = weather.date_matching_weather(lat, lon, when=when)
+    urls = photos.search(matching_date)
     return render_to_response("master.html", dict(urls=urls))
 
 
