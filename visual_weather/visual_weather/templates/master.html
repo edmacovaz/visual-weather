@@ -39,63 +39,66 @@
     nav ol, nav ol li ul  {padding: 0px}*/
     body {}
     #container {width: 320px; overflow: hidden;}
+    nav {z-index: 10}
     .images {width: 150%}
     .images ul li {height: 140px;}
     .images ul li {vertical-align: top;}
     img {max-height: 100%;}
     .images ul li {display: inline-block; list-style: none;}
-    .images header {position: fixed; height: 100%; width: 100%; top: 0px; left: 0px; display: table-cell; text-align: center; vertical-align: middle; font-size: 36px; font-weight: bold; color: rgba(148, 227, 252, 0.75);}
-    .images header p {width: 320px;}
+    .images header {position: fixed; height: 100%; width: 100%; top: 0px; left: 0px; display: table; font-size: 36px; font-weight: bold; color: rgba(148, 227, 252, 0.75); z-index: 1;}
+    .images header p {width: 320px; text-align: center; vertical-align: middle; display: table-cell;}
 
     @media only screen and (min-width: 480px) {
     /*#container {position: relative; left: -120px; width: 100%;}*/
     #container {width: 100%; overflow:hidden;}
     .images {width: 150%}
     .images ul li {height: 320px;}
+    .images header {font-size: 72px; display: table;}
     .images header p {width: 50%; margin: auto; display: table-cell; vertical-align: middle; text-align: center; }    
-    .images header {font-size: 72px;}
+
   }
 
   </style>
 </head>
 <body>
   <section id="container">
-  <nav id="days">
-    <ol>
-      <li id="today">
-        <ul>
-          <li>{{ current_data.weekday }}</li>
-          <li>{{ current_data.data.maxtemp }} °C</li>
-        </ul>
-      </li>
-      <li id="tomorrow">
-        <ul>
-          <li><a href="/?{{ tomorrows_data.url }}">{{ tomorrows_data.weekday }}</a></li>
-          <li>{{ tomorrows_data.data.maxtemp }} °C</li>
-        </ul>
-      </li>
-      <li>
-        <ul>
-          <li><a href="/?{{ after_tomorrows_data.url }}">{{ after_tomorrows_data.weekday }}</a></li>
-          <li>{{ after_tomorrows_data.data.maxtemp }} °C</li>
-        </ul>
-      </li>
+    <nav id="days">
+      <ol>
+        <li id="today">
+          <ul>
+            <li>{{ current_data.weekday }}</li>
+            <li>{{ current_data.data.maxtemp }} °C</li>
+          </ul>
+        </li>
+        <li id="tomorrow">
+          <ul>
+            <li><a href="/?{{ tomorrows_data.url }}">{{ tomorrows_data.weekday }}</a></li>
+            <li>{{ tomorrows_data.data.maxtemp }} °C</li>
+          </ul>
+        </li>
+        <li>
+          <ul>
+            <li><a href="/?{{ after_tomorrows_data.url }}">{{ after_tomorrows_data.weekday }}</a></li>
+            <li>{{ after_tomorrows_data.data.maxtemp }} °C</li>
+          </ul>
+        </li>
 
-    </ol>
-  </nav>
+      </ol>
+    </nav>
+
+    <section class="images">
+      <header>
+        <p>Today's weather looks a lot like {{matching_date}}</p>
+      </header>
+      <ul>{% for url in urls %}<li><img src="{{ url }}" alt="Flickr photo"></li>{% endfor %}</ul>
+    </section>
+
+    </section>
+
+    <footer id="site-footer">
+      <p>Photo Hack Day project</p>
+    </footer>
   </section>
 
-  <section class="images">
-    <header>
-      <p>This is what today's weather looked like last time it happened</p>
-    </header>
-    <ul>{% for url in urls %}<li><img src="{{ url }}" alt="Flickr photo"></li>{% endfor %}</ul>
-  </section>
-
-  </section>
-
-  <footer id="site-footer">
-    <p>Photo Hack Day project</p>
-  </footer>
 </body>
 </html>
