@@ -4,7 +4,9 @@ from BeautifulSoup import BeautifulSoup
 
 from django.conf import settings
 
+from base.cache import cache_result
 from base.models import WeatherData
+
 
 WEATHER_URL = "http://api.aerisapi.com/forecasts/?limit={number_days}&p={lat},{lon}&client_id={client_id}&client_secret={client_secret}&from={when}"
 
@@ -13,8 +15,9 @@ def kph_to_bft(speed):
     return int(round((speed_in_mps / .836) ** (2. / 3.)))
 
 
+@cache_result()
 def get_data(lat, lon, number_days=3, when="today"):
-    
+
     json_data = urllib.urlopen(WEATHER_URL.format(client_id=settings.HAMWEATHER_CLIENT_ID,
                                                   client_secret=settings.HAMWEATHER_CLIENT_SECRET,
                                                   lat=lat,
