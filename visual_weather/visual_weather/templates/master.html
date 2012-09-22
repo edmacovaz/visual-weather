@@ -61,19 +61,19 @@
       <li id="today">
         <ul>
           <li>{{ current_data.weekday }}</li>
-          <li>{{ current_data.data.maxtemp }} degrees</li>
+          <li>{{ current_data.data.maxtemp }} °C</li>
         </ul>
       </li>
       <li id="tomorrow">
         <ul>
-          <li>{{ tomorrows_data.weekday }}</li>
-          <li>{{ tomorrows_data.data.maxtemp }} degrees</li>
+          <li><a href="/?{{ tomorrows_data.url }}">{{ tomorrows_data.weekday }}</a></li>
+          <li>{{ tomorrows_data.data.maxtemp }} °C</li>
         </ul>
       </li>
       <li>
         <ul>
-          <li>{{ after_tomorrows_data.weekday }}</li>
-          <li>{{ after_tomorrows_data.data.maxtemp }} degrees</li>
+          <li><a href="/?{{ after_tomorrows_data.url }}">{{ after_tomorrows_data.weekday }}</a></li>
+          <li>{{ after_tomorrows_data.data.maxtemp }} °C</li>
         </ul>
       </li>
 

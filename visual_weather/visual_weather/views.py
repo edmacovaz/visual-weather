@@ -1,3 +1,4 @@
+from urllib import urlencode
 from django.shortcuts import render_to_response
 from django.views.decorators.cache import cache_page
 from datetime import date, timedelta
@@ -8,6 +9,9 @@ from base import weather
 def weekday_for_date(date):
     return date.strftime("%A")
 
+def url_for_date(date):
+    return urlencode(dict(when=date.strftime("%Y/%m/%d")))
+
 
 def index(request):
     lat, lon = 52.529531, 13.411978
@@ -17,9 +21,14 @@ def index(request):
     weather_data = weather.get_data(lat, lon, when=when, number_days=3)
 
     current_data = dict(weekday=weekday_for_date(date_obj), data=weather_data[0])
-    tomorrows_data = dict(weekday=weekday_for_date(date_obj + timedelta(days=1)),
+
+    tomorrow = date_obj + timedelta(days=1)
+    tomorrows_data = dict(weekday=weekday_for_date(tomorrow),
+                          url=url_for_date(tomorrow),
                           data=weather_data[1])
-    after_tomorrows_data = dict(weekday=weekday_for_date(date_obj + timedelta(days=2)),
+    after_tomorrow = date_obj + timedelta(days=2)
+    after_tomorrows_data = dict(weekday=weekday_for_date(after_tomorrow),
+                                url=url_for_date(after_tomorrow),
                                 data=weather_data[2])
 
     matching_date = weather.find_matches(current_data["data"], limit=1)[0].date
