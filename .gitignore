@@ -1,0 +1,4 @@
+*.sqlite
+*~
+*.pyc
+*kate-swp
