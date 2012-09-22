@@ -4,7 +4,7 @@ import flickr
 
 from datetime import datetime, timedelta
 
-def search(day, lat='52.52992', lon='13.41157', limit=10):
+def search(day, lat='52.52992', lon='13.41157', limit=32):
     """
     Return photos for the given date object.
     """
