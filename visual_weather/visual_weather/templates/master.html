@@ -27,8 +27,8 @@
       padding: 0;
       border: 0;
     }
-
-    body {font-family: 'Inconsolata', sans-serif;}
+    body { font-family: helvetica, arial, sans-serif;}
+    /*body {font-family: 'Inconsolata', sans-serif;}*/
     /* #container {position: relative; left: -120px; width: 544px;}
     nav, section.images {display: inline-block;}
     nav {width: 120px; vertical-align: top;}*/
@@ -41,15 +41,18 @@
     .images ul li {height: 140px;}
     .images ul li {vertical-align: top;}
     img {max-height: 100%;}
-
     .images ul li {display: inline-block; list-style: none;}
+    .images header {position: fixed; height: 100%; width: 100%; top: 0px; left: 0px; display: table-cell; text-align: center; vertical-align: middle; font-size: 36px; font-weight: bold; color: rgba(148, 227, 252, 0.75);}
+    .images header p {width: 320px;}
 
     @media only screen and (min-width: 480px) {
     /*#container {position: relative; left: -120px; width: 100%;}*/
     #container {width: 100%; overflow:hidden;}
     .images {width: 150%}
     .images ul li {height: 320px;}
-    }
+    .images header p {width: 50%; margin: auto; display: table-cell; vertical-align: middle; text-align: center; }    
+    .images header {font-size: 72px;}
+  }
 
   </style>
 </head>
@@ -81,7 +84,7 @@
 
   <section class="images">
     <header>
-      <p></p>
+      <p>This is what today's weather looked like last time it happened</p>
     </header>
     <ul>{% for url in urls %}<li><img src="{{ url }}" alt="Flickr photo"></li>{% endfor %}</ul>
   </section>
