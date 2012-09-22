@@ -28,32 +28,30 @@
     }
 
     body {font-family: helvetica, sans-serif; }
-    #container {position: relative; left: -120px; width: 544px;}
+    /* #container {position: relative; left: -120px; width: 544px;}
     nav, section.images {display: inline-block;}
-    nav {width: 120px; vertical-align: top;}
+    nav {width: 120px; vertical-align: top;}*/
+    /*nav ol li {height: 120px; width: 120px; background-color: grey;}
+    nav ol li, nav ol li ul li {list-style: none;}
+    nav ol, nav ol li ul  {padding: 0px}*/
     .images {width: 420px}
     .images ul li {height: 140px;}
-    .images header {position: fixed; }
-    .images p {text-align: center; width: 320px;}
-    nav ol li {height: 120px; width: 120px; background-color: grey;}
-    nav ol li, nav ol li ul li {list-style: none;}
-    nav ol, nav ol li ul  {padding: 0px}
+
     img {max-height: 100%;}
 
     .images ul li {display: inline-block; list-style: none;}
 
     @media only screen and (min-width: 480px) {
-    #container {position: relative; left: -120px; width: 100%;}
+    /*#container {position: relative; left: -120px; width: 100%;}*/
     .images {width: 100%}
-    .images ul li {height: 280px;}
-
+    .images ul li {height: 420px;}
     }
 
   </style>
 </head>
 <body>
   <section id="container">
-  <nav id="days">
+  <!-- <nav id="days">
     <ol>
       <li>
         <ul>
@@ -75,12 +73,10 @@
       </li>
 
     </ol>
-  </nav>
+  </nav> -->
 
   <section class="images">
-    <header>
-      <p>The weather's like it was on {{ matching_date }}</p>
-    </header>
+
     <ul>
       {% for url in urls %}
         <li>
