@@ -66,18 +66,24 @@
         <ul>
           <li>{{ current_data.weekday }}</li>
           <li>{{ current_data.data.maxtemp }} °C</li>
+          <li>Precipation: {{ current_data.data.precipation }}mm </li>
+          <li>Wind: {{ current_data.data.wind }} Bft</li>
         </ul>
       </li>
       <li id="tomorrow">
         <ul>
           <li><a href="/?{{ tomorrows_data.url }}">{{ tomorrows_data.weekday }}</a></li>
           <li>{{ tomorrows_data.data.maxtemp }} °C</li>
+          <li>Precipation: {{ tomorrows_data.data.precipation }}mm </li>
+          <li>Wind: {{ tomorrows_data.data.wind }} Bft</li>
         </ul>
       </li>
       <li>
         <ul>
           <li><a href="/?{{ after_tomorrows_data.url }}">{{ after_tomorrows_data.weekday }}</a></li>
           <li>{{ after_tomorrows_data.data.maxtemp }} °C</li>
+          <li>Precipation: {{ after_tomorrows_data.data.precipation }}mm </li>
+          <li>Wind: {{ after_tomorrows_data.data.wind }} Bft</li>
         </ul>
       </li>
 
