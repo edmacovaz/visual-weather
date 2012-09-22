@@ -3,21 +3,31 @@
 <head>
   <meta charset="utf-8">
   <title>Visual Weather</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("a#show-nav").click(function() {
+        $("#container").css("left","0px");
+      });
+    });
 
+  </script>
   <style type="text/css">
-    body {font-family: helvetica, sans-serif;}
+    * {padding: 0px; margin: 0px;}
+    body {font-family: helvetica, sans-serif; }
+    #container {position: relative; left: -120px; width: 444px;}
     nav, section.images {display: inline-block;}
-    nav {width: 80px}
+    nav {width: 120px;}
     .images {width: 320px}
     nav ol li, nav ol li ul li {list-style: none;}
+    nav ol, nav ol li ul  {padding: 0px}
+
     .images ul li {display: inline-block; list-style: none;}
 
   </style>
 </head>
 <body>
-  <header>
-    <h1>Visual Weather</h1>
-  </header>
+  <section id="container">
   <nav id="days">
     <ol>
       <li>
@@ -47,6 +57,7 @@
 
   <section class="images">
     <h2>What today's weather looks like.</h2>
+    <a id="show-nav" href="#">Show nav</a>
     <ul>
       <li>
         <img src="http://www.placehold.it/100x100" alt="image of stuff">
@@ -76,6 +87,8 @@
         <img src="http://www.placehold.it/100x100" alt="image of stuff">
       </li>   
     </ul> 
+
+  </section>
 
   </section>
 
