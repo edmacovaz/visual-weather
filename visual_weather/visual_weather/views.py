@@ -4,7 +4,6 @@ from datetime import date, datetime
 from base import photos
 from base import weather
 
-
 @cache_page(60*60)
 def index(request):
     lat, lon = 52.529531, 13.411978
