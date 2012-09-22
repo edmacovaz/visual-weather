@@ -19,5 +19,5 @@ def search(year, month, day, lat=52.52992, lon=13.41157, limit=32):
                                   lon=str(lon),
                                   #geo_context='2',
                                   per_page=limit,
-                                  radius='5')
-    return [p.getMedium() for p in photos]
+                                  radius='2')
+    return [(p.getMedium(), p.title) for p in photos]

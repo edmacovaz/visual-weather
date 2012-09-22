@@ -2,6 +2,7 @@ from urllib import urlencode
 from django.shortcuts import render_to_response
 from django.views.decorators.cache import cache_page
 from datetime import date, timedelta
+from random import shuffle
 from base import photos
 from base import weather
 
@@ -34,6 +35,7 @@ def index(request):
     matching_date = weather.find_matches(current_data["data"], limit=1)[0].date
     year, month, day = matching_date.year, matching_date.month, matching_date.day
     urls = photos.search(year, month, day, lat=lat, lon=lon)
+    shuffle(urls)
 
     context = dict(urls=urls,
                    matching_date=matching_date,
