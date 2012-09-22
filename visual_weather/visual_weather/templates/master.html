@@ -34,24 +34,24 @@
         <ul>
           <li>Friday</li>
           <li>18 degrees</li>
-          <li>Rain</li>          
+          <li>Rain</li>
         </ul>
       </li>
       <li id="today">
         <ul>
           <li>Saturday</li>
           <li>18 degrees</li>
-          <li>Rain</li>          
+          <li>Rain</li>
         </ul>
       </li>
       <li>
         <ul>
           <li>Sunday</li>
           <li>18 degrees</li>
-          <li>Rain</li>          
+          <li>Rain</li>
         </ul>
       </li>
-   
+
     </ol>
   </nav>
 
@@ -76,17 +76,22 @@
       </li>
       <li>
         <img src="http://www.placehold.it/100x100" alt="image of stuff">
-      </li>      
-      <li>
-        <img src="http://www.placehold.it/100x100" alt="image of stuff">
       </li>
       <li>
         <img src="http://www.placehold.it/100x100" alt="image of stuff">
       </li>
       <li>
         <img src="http://www.placehold.it/100x100" alt="image of stuff">
-      </li>   
-    </ul> 
+      </li>
+      <li>
+        <img src="http://www.placehold.it/100x100" alt="image of stuff">
+      </li>
+      {% for url in urls %}
+        <li>
+          <img src="{{ url }}" alt="pic">
+        </li>
+      {% endfor %}
+    </ul>
 
   </section>
 
