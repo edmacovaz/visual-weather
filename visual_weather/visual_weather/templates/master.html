@@ -62,76 +62,43 @@
 </head>
 <body>
   <section id="container">
-<<<<<<< HEAD
+
     <nav id="days">
       <ol>
         <li id="today">
           <ul>
             <li>{{ current_data.weekday }}</li>
             <li>{{ current_data.data.maxtemp }} °C</li>
+            <li>Precipation: {{ current_data.data.precipation }}mm </li>
+            <li>Wind: {{ current_data.data.wind }} Bft</li>
           </ul>
         </li>
         <li id="tomorrow">
           <ul>
             <li><a href="/?{{ tomorrows_data.url }}">{{ tomorrows_data.weekday }}</a></li>
             <li>{{ tomorrows_data.data.maxtemp }} °C</li>
+            <li>Precipation: {{ tomorrows_data.data.precipation }}mm </li>
+            <li>Wind: {{ tomorrows_data.data.wind }} Bft</li>
           </ul>
         </li>
         <li>
           <ul>
             <li><a href="/?{{ after_tomorrows_data.url }}">{{ after_tomorrows_data.weekday }}</a></li>
             <li>{{ after_tomorrows_data.data.maxtemp }} °C</li>
+            <li>Precipation: {{ after_tomorrows_data.data.precipation }}mm </li>
+            <li>Wind: {{ after_tomorrows_data.data.wind }} Bft</li>
           </ul>
         </li>
-=======
-  <nav id="days">
-    <ol>
-      <li id="today">
-        <ul>
-          <li>{{ current_data.weekday }}</li>
-          <li>{{ current_data.data.maxtemp }} °C</li>
-          <li>Precipation: {{ current_data.data.precipation }}mm </li>
-          <li>Wind: {{ current_data.data.wind }} Bft</li>
-        </ul>
-      </li>
-      <li id="tomorrow">
-        <ul>
-          <li><a href="/?{{ tomorrows_data.url }}">{{ tomorrows_data.weekday }}</a></li>
-          <li>{{ tomorrows_data.data.maxtemp }} °C</li>
-          <li>Precipation: {{ tomorrows_data.data.precipation }}mm </li>
-          <li>Wind: {{ tomorrows_data.data.wind }} Bft</li>
-        </ul>
-      </li>
-      <li>
-        <ul>
-          <li><a href="/?{{ after_tomorrows_data.url }}">{{ after_tomorrows_data.weekday }}</a></li>
-          <li>{{ after_tomorrows_data.data.maxtemp }} °C</li>
-          <li>Precipation: {{ after_tomorrows_data.data.precipation }}mm </li>
-          <li>Wind: {{ after_tomorrows_data.data.wind }} Bft</li>
-        </ul>
-      </li>
->>>>>>> e98e64c5a25e622da6e674b0cc293840f13bf62f
 
       </ol>
     </nav>
 
-<<<<<<< HEAD
     <section class="images">
       <header>
         <p>Today's weather looks a lot like {{matching_date}}</p>
       </header>
       <ul>{% for url in urls %}<li><img src="{{ url }}" alt="Flickr photo"></li>{% endfor %}</ul>
     </section>
-
-    </section>
-=======
-  <section class="images">
-    <header>
-      <p>This is what today's weather looked like last time it happened</p>
-    </header>
-    <ul>{% for url, meta in urls %}<li><img src="{{ url }}" alt="Flickr photo: {{ meta }}"></li>{% endfor %}</ul>
-  </section>
->>>>>>> e98e64c5a25e622da6e674b0cc293840f13bf62f
 
     <footer id="site-footer">
       <p>Photo Hack Day project</p>
