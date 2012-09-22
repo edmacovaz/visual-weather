@@ -46,9 +46,15 @@ def find_matches(data, limit=5):
         pks = [pk for pk, score in sorted(scores.items(), key=lambda x: x[1])[:limit]]
         return WeatherData.objects.filter(pk__in=pks).all()
 
-if __name__ == "__main__":
-    #print get_data(52.529531,13.411978)
-    test_data = {'maxtemp': 15, 'dewpoint': 7, 'temp': 13, 'mintemp': 6, 'pressure': 1009, 'precipation': 0.9, 'wind': 5}
 
-    for wd in  find_matches(test_data):
-        print wd.date
+def dates_matching_current_weather(lat, lon, limit=1):
+    for wd in find_matches(get_data(lat, lon), limit=limit):
+        yield wd.date
+
+
+def date_matching_current_weather(lat, lon):
+    return dates_matching_current_weather(lat, lon).next()
+
+
+if __name__ == "__main__":
+    print date_matching_current_weather(52.529531,13.411978)
