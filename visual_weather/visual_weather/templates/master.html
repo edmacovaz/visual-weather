@@ -15,12 +15,16 @@
   <style type="text/css">
     * {padding: 0px; margin: 0px;}
     body {font-family: helvetica, sans-serif; }
-    #container {position: relative; left: -120px; width: 444px;}
+    #container {position: relative; left: -120px; width: 544px;}
     nav, section.images {display: inline-block;}
-    nav {width: 120px;}
-    .images {width: 320px}
+    nav {width: 120px; vertical-align: top;}
+    .images {width: 420px}
+    .images ul li {height: 140px;}
+    .images h1 {position: fixed;}
+    nav ol {height: 120px; width: 120px; background-color: grey;}
     nav ol li, nav ol li ul li {list-style: none;}
     nav ol, nav ol li ul  {padding: 0px}
+    img {max-height: 100%;}
 
     .images ul li {display: inline-block; list-style: none;}
 
@@ -34,21 +38,18 @@
         <ul>
           <li>Friday</li>
           <li>18 degrees</li>
-          <li>Rain</li>
         </ul>
       </li>
       <li id="today">
         <ul>
           <li>Saturday</li>
           <li>18 degrees</li>
-          <li>Rain</li>
         </ul>
       </li>
       <li>
         <ul>
           <li>Sunday</li>
-          <li>18 degrees</li>
-          <li>Rain</li>
+          <li>18</li>
         </ul>
       </li>
 
@@ -56,36 +57,9 @@
   </nav>
 
   <section class="images">
-    <h2>What today's weather looks like.</h2>
+    <h1>- Jacket -</h1>
     <a id="show-nav" href="#">Show nav</a>
     <ul>
-      <li>
-        <img src="http://www.placehold.it/100x100" alt="image of stuff">
-      </li>
-      <li>
-        <img src="http://www.placehold.it/100x100" alt="image of stuff">
-      </li>
-      <li>
-        <img src="http://www.placehold.it/100x100" alt="image of stuff">
-      </li>
-      <li>
-        <img src="http://www.placehold.it/100x100" alt="image of stuff">
-      </li>
-      <li>
-        <img src="http://www.placehold.it/100x100" alt="image of stuff">
-      </li>
-      <li>
-        <img src="http://www.placehold.it/100x100" alt="image of stuff">
-      </li>
-      <li>
-        <img src="http://www.placehold.it/100x100" alt="image of stuff">
-      </li>
-      <li>
-        <img src="http://www.placehold.it/100x100" alt="image of stuff">
-      </li>
-      <li>
-        <img src="http://www.placehold.it/100x100" alt="image of stuff">
-      </li>
       {% for url in urls %}
         <li>
           <img src="{{ url }}" alt="pic">
