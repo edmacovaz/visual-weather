@@ -12,6 +12,7 @@
     });
 
   </script>
+  <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
   <style type="text/css">
     /*  Resets   ------  */
 
@@ -27,13 +28,15 @@
       border: 0;
     }
 
-    body {font-family: helvetica, sans-serif; }
+    body {font-family: 'Inconsolata', sans-serif;}
     /* #container {position: relative; left: -120px; width: 544px;}
     nav, section.images {display: inline-block;}
     nav {width: 120px; vertical-align: top;}*/
     /*nav ol li {height: 120px; width: 120px; background-color: grey;}
     nav ol li, nav ol li ul li {list-style: none;}
     nav ol, nav ol li ul  {padding: 0px}*/
+    body {}
+    #container {width: 320px; overflow: hidden;}
     .images {width: 420px}
     .images ul li {height: 140px;}
 
@@ -76,6 +79,9 @@
   </nav> -->
 
   <section class="images">
+    <header>
+      <p></p>
+    </header>
 
     <ul>
       {% for url in urls %}
