@@ -19,6 +19,6 @@ def index(request):
 @cache_page(60*60)
 def for_day(request, day=''):
     year, month, day = day.split('-')
-    urls = photos.search(int(year), int(month), int(day))
-    return render_to_response("master.html", dict(urls=urls))
+    photos = photos.search(int(year), int(month), int(day))
+    return render_to_response("master.html", dict(photos=photos))
 
