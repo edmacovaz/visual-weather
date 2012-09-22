@@ -54,7 +54,7 @@
     .images {width: 150%}
     .images ul li {height: 320px;}
     .images header {font-size: 72px; display: table;}
-    .images header p {width: 50%; margin: auto; display: table-cell; vertical-align: middle; text-align: center; }    
+    .images header p {width: 50%; margin: auto; display: table-cell; vertical-align: middle; text-align: center; }
 
   }
 
@@ -97,7 +97,7 @@
       <header>
         <p>Today's weather looks a lot like {{matching_date}}</p>
       </header>
-      <ul>{% for url in urls %}<li><img src="{{ url }}" alt="Flickr photo"></li>{% endfor %}</ul>
+      <ul>{% for url, meta in urls %}<li><img src="{{ url }}" alt="Flickr photo: {{ meta }}"></li>{% endfor %}</ul>
     </section>
 
     <footer id="site-footer">

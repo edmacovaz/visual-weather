@@ -17,7 +17,7 @@ def _get_cache_key(func, args, kwargs):
     return hashlib.sha512(cache_key).hexdigest()
 
 
-def cache_result(timeout=300, do_not_cache=()):
+def cache_result(timeout=60*60*24, do_not_cache=()):
 
     def decorator(func):
 
