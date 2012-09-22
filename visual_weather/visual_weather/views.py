@@ -1,9 +1,10 @@
 from django.shortcuts import render_to_response
+from django.views.decorators.cache import cache_page
 from datetime import date, datetime
 from base import photos
 from base import weather
 
-
+@cache_page(60*60)
 def index(request):
     lat, lon = 52.529531, 13.411978
     when = request.GET.get("when", "today")
@@ -14,6 +15,7 @@ def index(request):
     return render_to_response("master.html", context)
 
 
+@cache_page(60*60)
 def for_day(request, day=''):
     day = datetime.strptime(day, "%Y-%m-%d")
     urls = photos.search(day)
