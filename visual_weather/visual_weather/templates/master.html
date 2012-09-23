@@ -4,14 +4,7 @@
   <meta charset="utf-8">
   <title>Visual Weather</title>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $("a#show-nav").click(function() {
-        $("#container").css("left","0px");
-      });
-    });
-
-  </script>
+  <link href='http://fonts.googleapis.com/css?family=Quicksand:300,400,700' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
   <style type="text/css">
     /*  Resets   ------  */
@@ -39,7 +32,9 @@
     nav ol, nav ol li ul  {padding: 0px}*/
     body {}
     #container {width: 320px; overflow: hidden;}
-    nav {z-index: 10}
+    nav#days {z-index: 10; color: rgba(254, 254, 254, 1.0); background-color: rgba(148, 227, 252, 1.0); padding: 10px; overflow: hidden; font-weight: 200;}
+    nav#days ul li, nav#days a {display: inline-block; width: 20%;}
+    nav#days a {text-decoration: none; color: rgba(254, 254, 254, 1.0) }
     .images {width: 200%}
     .images header {position: fixed; height: 100%; width: 100%; top: 0px; left: 0px; display: table; font-size: 36px; font-weight: bold; color: rgba(148, 227, 252, 0.85); z-index: 1;}
     .images header p {width: 320px; text-align: center; vertical-align: middle; display: table-cell; padding: 16%;}
@@ -65,35 +60,15 @@
 </head>
 <body>
   <section id="container">
-
     <nav id="days">
-      <ol>
-        <li id="today">
-          <ul>
-            <li>{{ current_data.weekday }}</li>
-            <li>{{ current_data.data.maxtemp }} °C</li>
-            <li>Precipation: {{ current_data.data.precipation }}mm </li>
-            <li>Wind: {{ current_data.data.wind }} Bft</li>
-          </ul>
-        </li>
-        <li id="tomorrow">
-          <ul>
-            <li><a href="/?{{ tomorrows_data.url }}">{{ tomorrows_data.weekday }}</a></li>
-            <li>{{ tomorrows_data.data.maxtemp }} °C</li>
-            <li>Precipation: {{ tomorrows_data.data.precipation }}mm </li>
-            <li>Wind: {{ tomorrows_data.data.wind }} Bft</li>
-          </ul>
-        </li>
-        <li>
-          <ul>
-            <li><a href="/?{{ after_tomorrows_data.url }}">{{ after_tomorrows_data.weekday }}</a></li>
-            <li>{{ after_tomorrows_data.data.maxtemp }} °C</li>
-            <li>Precipation: {{ after_tomorrows_data.data.precipation }}mm </li>
-            <li>Wind: {{ after_tomorrows_data.data.wind }} Bft</li>
-          </ul>
-        </li>
-
-      </ol>
+      <a id="previous" href="url for previous day goes here">&larr;</a>
+      <ul>
+        <li>{{ current_data.weekday }}</li>
+        <li>{{ current_data.data.maxtemp }} °C</li>
+        <li>{{ current_data.data.precipation }}mm </li>
+        <!--<li>Wind: {{ current_data.data.wind }} Bft</li>-->
+      </ul>
+      <a id="next" href="url for next day goes here">&rarr;</a>
     </nav>
 
     <section class="images">
