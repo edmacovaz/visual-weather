@@ -34,8 +34,10 @@
     .images {width: 200%; clear: both;}
     .images header {position: fixed; height: 100%; width: 100%; top: 0px; left: 0px; display: table; font-size: 36px; font-weight: bold; color: rgba(148, 227, 252, 0.85); z-index: 0;}
     .images header p {width: 320px; text-align: center; vertical-align: middle; display: table-cell; padding: 16%;}
-    .images ul li {height: 140px; vertical-align: top; display: inline-block; list-style: none; font-size: 48px;}
+    .images ul li {height: 140px; vertical-align: top; display: inline-block; list-style: none; }
     img {max-height: 100%;}
+
+    footer p {position: fixed; bottom: 0px; color: rgba(254, 254, 254, 0.65);}
 
 
     @media only screen and (max-width: 479px) {
@@ -55,6 +57,10 @@
       .images header p {width: 50%; margin: auto; display: table-cell; vertical-align: middle; text-align: center;}
       .images ul li {height: 320px;}
 
+    }
+
+    @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+      .images header {font-size: 144px;}
     }
 
   </style>
@@ -79,7 +85,7 @@
     </section>
 
     <footer id="site-footer">
-      <p>Photo Hack Day project</p>
+      <a href="http://www.photohackday.com/">Photo Hack Day</a>
     </footer>
   </section>
 
