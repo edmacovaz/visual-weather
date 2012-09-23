@@ -19,5 +19,14 @@ def search(year, month, day, lat=52.52992, lon=13.41157, limit=32):
                                   lon=str(lon),
                                   #geo_context='2',
                                   per_page=limit,
-                                  radius='5')
+                                  radius='10')
     return [(p.getMedium(), p.title) for p in photos]
+
+
+def facebook_search(year, month, day):
+    raise NotImplementedError("Not ready yet")
+    """
+    url = 'https://api.facebook.com/method/fql.query?query='
+    url = url + urlquote(query)
+    response = urlopen(url)
+    """

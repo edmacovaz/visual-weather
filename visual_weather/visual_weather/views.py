@@ -46,9 +46,15 @@ def index(request):
     return render_to_response("master.html", context)
 
 
-@cache_page(60*60)
-def for_day(request, day=''):
+def for_day(request, day='', lat='52.529531', lon='13.1411978'):
     year, month, day = day.split('-')
-    urls = photos.search(int(year), int(month), int(day))
-    return render_to_response("master.html", dict(urls=urls))
+    urls = photos.search(int(year), int(month), int(day), lat, lon)
+    shuffle(urls)
+    datum = date(int(year), int(month), int(day))
+    context = dict(urls=urls,
+                   year=year,
+                   month=month,
+                   day=datum.strftime("%d, %h %Y"),
+                   )
+    return render_to_response("remember.html", context)
 

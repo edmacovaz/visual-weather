@@ -6,7 +6,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'visual_weather.views.index', name='home'),
-    url(r'^weather/(\d{4}-\d{2}-\d{2})/$', 'visual_weather.views.for_day', name='for_day'),
+    url(r'^(\d{4}-\d{2}-\d{2})/(.*)/(.*)/$', 'visual_weather.views.for_day', name='for_day'),
     #url(r'^visual_weather/', include('visual_weather.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
