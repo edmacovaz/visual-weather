@@ -20,7 +20,7 @@ def search(year, month, day, lat=52.52992, lon=13.41157, limit=32, bust=1):
                                   #sort='interestingness-desc',
                                   #geo_context='2',
                                   per_page=limit*2,
-                                  radius='10')
+                                  radius='20')
     final = []
     users = set()
     removed = 0
