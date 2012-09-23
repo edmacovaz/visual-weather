@@ -31,15 +31,16 @@
     nav ol li, nav ol li ul li {list-style: none;}
     nav ol, nav ol li ul  {padding: 0px}*/
     body {}
-    #container {width: 320px; overflow: hidden;}
-    nav#days {z-index: 100; color: rgba(254, 254, 254, 1.0); background-color: rgba(148, 227, 252, 1.0); padding: 4px; overflow: hidden; font-weight: 200;}
+    #container {width: 320px; overflow: hidden; z-index: -1}
+    nav#days {color: rgba(254, 254, 254, 1.0); background-color: rgba(148, 227, 252, 1.0); padding: 4px; overflow: hidden; font-weight: 200;}
+    nav#days ul li a {position: relative; z-index: 2;}
     /*#previous {float: left;}
     #next {float: right;}*/
     nav#days ul {width: 50%; margin: auto; text-align: center;}
     nav#days ul li, nav#days a {display: inline-block; }
     nav#days a {text-decoration: none; color: rgba(254, 254, 254, 1.0) }
     .images {width: 200%; clear: both;}
-    .images header {position: fixed; height: 100%; width: 100%; top: 0px; left: 0px; display: table; font-size: 36px; font-weight: bold; color: rgba(148, 227, 252, 0.85); z-index: 1;}
+    .images header {position: fixed; height: 100%; width: 100%; top: 0px; left: 0px; display: table; font-size: 36px; font-weight: bold; color: rgba(148, 227, 252, 0.85); z-index: 0;}
     .images header p {width: 320px; text-align: center; vertical-align: middle; display: table-cell; padding: 16%;}
     .images ul li {height: 140px; vertical-align: top; display: inline-block; list-style: none;}
     img {max-height: 100%;}
