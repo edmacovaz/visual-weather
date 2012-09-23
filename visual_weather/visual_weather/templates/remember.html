@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <title>Visual Weather</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("a#show-nav").click(function() {
+        $("#container").css("left","0px");
+      });
+    });
+
+  </script>
+  <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+  <style type="text/css">
+    /*  Resets   ------  */
+
+    html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6,
+    p, blockquote, pre, a, abbr, address, cite, code, del, dfn, em,
+    img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, hr,
+    dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
+    table, caption, tbody, tfoot, thead, tr, th, td,
+    article, aside, canvas, details, figure, figcaption, hgroup,
+    menu, footer, header, nav, section, summary, time, mark, audio, video {
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+
+    body { font-family: helvetica, arial, sans-serif;}
+    /*body {font-family: 'Inconsolata', sans-serif;}*/
+
+    /* #container {position: relative; left: -120px; width: 544px;}
+    nav, section.images {display: inline-block;}
+    nav {width: 120px; vertical-align: top;}*/
+    /*nav ol li {height: 120px; width: 120px; background-color: grey;}
+    nav ol li, nav ol li ul li {list-style: none;}
+    nav ol, nav ol li ul  {padding: 0px}*/
+    body {}
+    #container {width: 320px; overflow: hidden;}
+    nav {z-index: 10}
+    .images {width: 200%}
+    .images ul li {height: 140px;}
+    .images ul li {vertical-align: top;}
+    img {max-height: 100%;}
+    .images ul li {display: inline-block; list-style: none;}
+    .images header {position: fixed; height: 100%; width: 100%; top: 0px; left: 0px; display: table; font-size: 36px; font-weight: bold; color: rgba(148, 227, 252, 0.75); z-index: 1;}
+    .images header p {width: 320px; text-align: center; vertical-align: middle; display: table-cell; padding: 16%;}
+
+    @media only screen and (max-width: 479px) {
+      .images header {width: 320px;}
+    }
+
+    @media only screen and (min-width: 480px) {
+      /*#container {position: relative; left: -120px; width: 100%;}*/
+      #container {width: 100%; overflow:hidden;}
+      .images {width: 150%}
+      .images ul li {height: 320px;}
+      .images header {font-size: 72px; display: table;}
+      .images header p {width: 50%; margin: auto; display: table-cell; vertical-align: middle; text-align: center; }
+    }
+
+  </style>
+</head>
+<body>
+  <section id="container">
+
+    <section class="images">
+      <header>
+        <p>Remember {{day}}?</p>
+      </header>
+      <ul>{% for url, meta in urls %}<li><img src="{{ url }}" alt="Flickr photo: {{ meta }}"></li>{% endfor %}</ul>
+    </section>
+
+    <footer id="site-footer">
+      <p>Photo Hack Day project</p>
+    </footer>
+  </section>
+
+</body>
+</html>

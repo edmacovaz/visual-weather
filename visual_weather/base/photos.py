@@ -17,6 +17,7 @@ def search(year, month, day, lat=52.52992, lon=13.41157, limit=32):
                                   max_taken_date=end.strftime("%Y-%m-%d"),
                                   lat=str(lat),
                                   lon=str(lon),
+                                  sort='interestingness-desc',
                                   #geo_context='2',
                                   per_page=limit,
                                   radius='10')
