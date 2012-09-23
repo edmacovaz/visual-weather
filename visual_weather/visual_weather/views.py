@@ -39,7 +39,7 @@ def index(request):
 
     matching_date = weather.find_matches(current_data["data"], limit=1)[0].date
     year, month, day = matching_date.year, matching_date.month, matching_date.day
-    urls = photos.search(year, month, day, lat=lat, lon=lon, limit=32, bust=2)
+    urls = photos.search(year, month, day, lat=lat, lon=lon, limit=32, bust=3)
     shuffle(urls)
 
     context = dict(urls=urls,
@@ -54,7 +54,7 @@ def index(request):
 
 def for_day(request, day='', lat='52.529531', lon='13.1411978'):
     year, month, day = day.split('-')
-    urls = photos.search(int(year), int(month), int(day), lat, lon, bust=2)
+    urls = photos.search(int(year), int(month), int(day), lat, lon, bust=3)
     shuffle(urls)
     datum = date(int(year), int(month), int(day))
     context = dict(urls=urls,
