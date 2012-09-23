@@ -61,19 +61,21 @@
 <body>
   <section id="container">
     <nav id="days">
-      <a id="previous" href="url for previous day goes here">&larr;</a>
+      {% if back_link %}
+        <a id="previous" href="{{ back_link }}">&larr;</a>
+      {% endif %}
       <ul>
         <li>{{ current_data.weekday }}</li>
         <li>{{ current_data.data.maxtemp }} °C</li>
         <li>{{ current_data.data.precipation }}mm </li>
         <!--<li>Wind: {{ current_data.data.wind }} Bft</li>-->
       </ul>
-      <a id="next" href="url for next day goes here">&rarr;</a>
+      <a id="next" href="{{ forward_link }}">&rarr;</a>
     </nav>
 
     <section class="images">
       <header>
-        <p>Today's weather looks a lot like {{matching_date}}</p>
+        <p>{{ this_weather }} looks a lot like {{matching_date}}</p>
       </header>
       <ul>{% for url, meta in urls %}<li><img src="{{ url }}" alt="Flickr photo: {{ meta }}"></li>{% endfor %}</ul>
     </section>
