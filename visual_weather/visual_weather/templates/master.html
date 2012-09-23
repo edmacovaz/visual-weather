@@ -32,10 +32,13 @@
     nav ol, nav ol li ul  {padding: 0px}*/
     body {}
     #container {width: 320px; overflow: hidden;}
-    nav#days {z-index: 10; color: rgba(254, 254, 254, 1.0); background-color: rgba(148, 227, 252, 1.0); padding: 10px; overflow: hidden; font-weight: 200;}
-    nav#days ul li, nav#days a {display: inline-block; width: 20%;}
+    nav#days {z-index: 100; color: rgba(254, 254, 254, 1.0); background-color: rgba(148, 227, 252, 1.0); padding: 4px; overflow: hidden; font-weight: 200;}
+    /*#previous {float: left;}
+    #next {float: right;}*/
+    nav#days ul {width: 50%; margin: auto; text-align: center;}
+    nav#days ul li, nav#days a {display: inline-block; }
     nav#days a {text-decoration: none; color: rgba(254, 254, 254, 1.0) }
-    .images {width: 200%}
+    .images {width: 200%; clear: both;}
     .images header {position: fixed; height: 100%; width: 100%; top: 0px; left: 0px; display: table; font-size: 36px; font-weight: bold; color: rgba(148, 227, 252, 0.85); z-index: 1;}
     .images header p {width: 320px; text-align: center; vertical-align: middle; display: table-cell; padding: 16%;}
     .images ul li {height: 140px; vertical-align: top; display: inline-block; list-style: none;}
@@ -47,7 +50,6 @@
     }
 
     @media only screen and (min-width: 480px) {
-      /*#container {position: relative; left: -120px; width: 100%;}*/
       #container {width: 100%; overflow:hidden;}
       .images {width: 200%}
       .images header {font-size: 72px; display: table;}
@@ -61,14 +63,15 @@
 <body>
   <section id="container">
     <nav id="days">
-      <a id="previous" href="url for previous day goes here">&larr;</a>
+      
       <ul>
+        <li><a id="previous" href="url for previous day goes here">&larr;</a></li>
         <li>{{ current_data.weekday }}</li>
         <li>{{ current_data.data.maxtemp }} °C</li>
         <li>{{ current_data.data.precipation }}mm </li>
-        <!--<li>Wind: {{ current_data.data.wind }} Bft</li>-->
+        <li><a id="next" href="url for next day goes here">&rarr;</a></li>
       </ul>
-      <a id="next" href="url for next day goes here">&rarr;</a>
+
     </nav>
 
     <section class="images">
