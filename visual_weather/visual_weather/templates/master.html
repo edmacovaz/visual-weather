@@ -4,14 +4,7 @@
   <meta charset="utf-8">
   <title>Visual Weather</title>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $("a#show-nav").click(function() {
-        $("#container").css("left","0px");
-      });
-    });
-
-  </script>
+  <link href='http://fonts.googleapis.com/css?family=Quicksand:300,400,700' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
   <style type="text/css">
     /*  Resets   ------  */
@@ -39,66 +32,49 @@
     nav ol, nav ol li ul  {padding: 0px}*/
     body {}
     #container {width: 320px; overflow: hidden;}
-    nav {z-index: 10}
-    .images {width: 200%}
-    .images ul li {height: 140px;}
-    .images ul li {vertical-align: top;}
-    img {max-height: 100%;}
-    .images ul li {display: inline-block; list-style: none;}
-    .images header {position: fixed; height: 100%; width: 100%; top: 0px; left: 0px; display: table; font-size: 36px; font-weight: bold; color: rgba(148, 227, 252, 0.75); z-index: 1;}
+    nav#days {z-index: 100; color: rgba(254, 254, 254, 1.0); background-color: rgba(148, 227, 252, 1.0); padding: 4px; overflow: hidden; font-weight: 200;}
+    /*#previous {float: left;}
+    #next {float: right;}*/
+    nav#days ul {width: 50%; margin: auto; text-align: center;}
+    nav#days ul li, nav#days a {display: inline-block; }
+    nav#days a {text-decoration: none; color: rgba(254, 254, 254, 1.0) }
+    .images {width: 200%; clear: both;}
+    .images header {position: fixed; height: 100%; width: 100%; top: 0px; left: 0px; display: table; font-size: 36px; font-weight: bold; color: rgba(148, 227, 252, 0.85); z-index: 1;}
     .images header p {width: 320px; text-align: center; vertical-align: middle; display: table-cell; padding: 16%;}
+    .images ul li {height: 140px; vertical-align: top; display: inline-block; list-style: none;}
+    img {max-height: 100%;}
+
 
     @media only screen and (max-width: 479px) {
       .images header {width: 320px;}
     }
 
     @media only screen and (min-width: 480px) {
-      /*#container {position: relative; left: -120px; width: 100%;}*/
       #container {width: 100%; overflow:hidden;}
-      .images {width: 150%}
-      .images ul li {height: 320px;}
+      .images {width: 200%}
       .images header {font-size: 72px; display: table;}
-      .images header p {width: 50%; margin: auto; display: table-cell; vertical-align: middle; text-align: center; }
+      .images header p {width: 50%; margin: auto; display: table-cell; vertical-align: middle; text-align: center;}
+      .images ul li {height: 320px;}
+
     }
 
   </style>
 </head>
 <body>
   <section id="container">
-
     <nav id="days">
-      <ol>
-        <li id="today">
-          <ul>
-            <li>{{ current_data.weekday }}</li>
-            <li>{{ current_data.data.maxtemp }} °C</li>
-            <li>Precipation: {{ current_data.data.precipation }}mm </li>
-            <li>Wind: {{ current_data.data.wind }} Bft</li>
-          </ul>
-        </li>
-        <li id="tomorrow">
-          <ul>
-            <li><a href="/?{{ tomorrows_data.url }}">{{ tomorrows_data.weekday }}</a></li>
-            <li>{{ tomorrows_data.data.maxtemp }} °C</li>
-            <li>Precipation: {{ tomorrows_data.data.precipation }}mm </li>
-            <li>Wind: {{ tomorrows_data.data.wind }} Bft</li>
-          </ul>
-        </li>
-        <li>
-          <ul>
-            <li><a href="/?{{ after_tomorrows_data.url }}">{{ after_tomorrows_data.weekday }}</a></li>
-            <li>{{ after_tomorrows_data.data.maxtemp }} °C</li>
-            <li>Precipation: {{ after_tomorrows_data.data.precipation }}mm </li>
-            <li>Wind: {{ after_tomorrows_data.data.wind }} Bft</li>
-          </ul>
-        </li>
-
-      </ol>
+      <ul>
+        <li>{% if back_link %}<a id="previous" href="{{ back_link }}">&larr;</a>{% endif %}</li>
+        <li>{{ current_data.weekday }}</li>
+        <li>{{ current_data.data.maxtemp }} °C</li>
+        <li>{{ current_data.data.precipation }}mm </li>
+        <li><a id="next" href="{{ forward_link }}">&rarr;</a></li>
+      </ul>
     </nav>
 
     <section class="images">
       <header>
-        <p>Today's weather looks a lot like {{matching_date}}</p>
+        <p>{{ this_weather }} looks a lot like {{matching_date}}</p>
       </header>
       <ul>{% for url, meta in urls %}<li><img src="{{ url }}" alt="Flickr photo: {{ meta }}"></li>{% endfor %}</ul>
     </section>
