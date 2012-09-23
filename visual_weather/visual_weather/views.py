@@ -26,9 +26,9 @@ def index(request):
     today = date.today()
 
     if date_obj == today:
-        this_weather = "Today's weather"
+        this_weather = "Today's weather looks"
     else:
-        this_weather = "The weather of {date}".format(date=date_obj.strftime("%b. %d, %Y"))
+        this_weather = "The weather for {date} will look".format(date=date_obj.strftime("%b. %d, %Y"))
 
     if date_obj > today:
         back_link = url_for_date(date_obj - timedelta(days=1))
